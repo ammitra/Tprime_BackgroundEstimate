@@ -57,12 +57,22 @@ Copies and unpacks the tarballs before cleaning them.
 source scripts/get_workspaces.sh
 ```
 
+## 2.5) Generate datacards
+
+This is very fast, so just run it locally.
+```
+source scripts/make_cards.sh
+```
+Modified combined cards will be stored under `$sig_unblind_fits/TprimeB-$sig-SR0x0-CR0x0_area/card.txt`. See notes below for detailed description of the card modification process.
+
 ### 3) Running fits after workspace creation 
 
 Locally: 
 ```
 python jointSRttbarCR.py -s $sig -w "$sig"_ --SRtf $SRtf --CRtf $CRtf --strat $strat --tol $tol --rMin $rMin --rMax $rMax -v $verbosity --fit 
 ```
+
+**NOTE:** To run on condor, the combined cards must first be created, as they are used as input to the condor job. Run this locally as in step 2 above.
 
 Condor:
 ```
@@ -71,9 +81,15 @@ python condor/submit_fits.py --sig $sig --verbosity $verbosity --tol $tol --stra
 
 This will generate three files that need to be placed in their respective workspace directory:
 
-* `initialFitWorkspace_$sig.root` - post-fit workspace w/ channel masks 
 * `card_$sig.txt` - combined SR+CR datacard with appropriate per-region nuisances as modified by `parse_card_SRCR_mcstats.py`
 * `fitDiagnosticsTest_${sig}.root` - post-fit B-only and S+B results 
+
+Use the script
+```
+python scripts/handle_FitDiagnostics_CondorOutput.py
+```
+
+to move the output files ot their respective directories, and create a postfit workspace (as 2DAlphabet does)
 
 ### 4) Plotting post-fit distributions 
 
@@ -103,6 +119,18 @@ python jointSRttbarCR.py -s $sig -w "$sig"_ --SRtf $SRtf --CRtf $CRtf --strat $s
 ```
 
 ### 7) Limits 
+
+Run the limits on condor:
+```
+python condor/submit_limits.py --sig $sig --seed $seed 
+```
+Then move them to their appropriate signal workspace directories using 
+```
+python scripts/handle_limits_CondorOutput.py
+```
+
+### 8) Plot limits
+
 
 
 ### Notes on automcstats and other region-specific nuisances

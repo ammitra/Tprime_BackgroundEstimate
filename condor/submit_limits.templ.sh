@@ -36,22 +36,17 @@ echo $$CMSSW_BASE "is the CMSSW we have on the local worker node"
 cd ../..
 
 echo "ls -lh"
-ls -lh
+ls -lh 
 
-chmod u+x run_blinded_condor.sh
-
-# First modify the Combine card so that it looks for base.root in the cwd
-sed -i -e 's-../base.root-./base.root-g' card.txt
-
-# Then create RooWorkspace
-echo -e "text2workspace.py card.txt --channel-masks -o initialFitWorkspace.root"
-text2workspace.py card.txt --channel-masks -o initialFitWorkspace.root
-
-# Then run B-only MultiDimFit in VR, followed by AsymptoticLimits
-./run_blinded_condor.sh --sig $sig --tf $tf --seed $seed --tol $tol --strat $strat --rmin $rMin --rmax $rMax --verbosity 3 -bl
-
-# Rename the output so we can distinguish it from the others when it gets sent back from condor node
-mv higgsCombine.AsymptoticLimits.mH125."${seed}".root higgsCombine.AsymptoticLimits.mH125."${sig}"."${seed}".root
+##############################################################
+#                   First run limits on the card             #
+##############################################################
+# Modify the card to point to the current directory instead of one above (this is a 2DAlphabet remnant)
+echo "sed -i 's-../base.root-./base.root-g' card.txt"
+sed -i 's-../base.root-./base.root-g' card.txt
+# Run the limits on the card
+(set -x; combine -M AsymptoticLimits -d "card_${sig}.txt" --saveWorkspace -v 2 -n "_${sig}_card" -s $seed)
+(set -x; combine -M AsymptoticLimits -d "initialFitWorkspace_${sig}.root" --snapshotName initialFit --saveWorkspace -v 2 -n "_${sig}_workspace" -s $seed)
 
 echo "ls -lh"
 ls -lh

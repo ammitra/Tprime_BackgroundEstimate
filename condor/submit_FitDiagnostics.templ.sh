@@ -36,14 +36,17 @@ echo $$CMSSW_BASE "is the CMSSW we have on the local worker node"
 cd ../..
 
 echo "ls -lh"
-ls -lh
+ls -lh 
 
+# Modify the card to point to the current directory instead of one above (this is a 2DAlphabet remnant)
+echo "sed -i 's-../base.root-./base.root-g' card.txt"
+sed -i 's-../base.root-./base.root-g' card.txt
 # Run the fit
-(set -x; combine -M FitDiagnostics card.txt --text2workspace "--channel-masks" --setParameters r=1 --saveWorkspace --cminDefaultMinimizerStrategy 1 --rMin -1 --rMax 1 -v 2 --robustFit 1 --cminDefaultMinimizerTolerance 5)
+(set -x; combine -M FitDiagnostics card.txt --text2workspace "--channel-masks" --setParameters r=1 --saveWorkspace --cminDefaultMinimizerStrategy $strat --rMin $rMin --rMax $rMax -v $v --robustFit 1 --cminDefaultMinimizerTolerance $tol)
 # Rename output 
 mv fitDiagnosticsTest.root fitDiagnosticsTest_"${sig}".root
 mv card.txt card_"${sig}".txt
-mv initialFitWorkspace.root initialFitWorkspace_"${sig}".root
+mv higgsCombineTest.FitDiagnostics.mH120.root higgsCombineTest.FitDiagnostics.mH120."${sig}".root
 
 echo "ls -lh"
 ls -lh

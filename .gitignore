@@ -6,3 +6,5 @@ results_before_unblinding/
 docker_stderror
 data.txt
 debug_gof_unblind/
+condor/fits/
+failed_*.txt

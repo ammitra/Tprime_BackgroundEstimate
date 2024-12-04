@@ -116,6 +116,21 @@ def test_make(SRorCR='',fr={}, json=''):
 
     twoD.Save()
 
+def makeCard(SRorCR='', signal='', SRtf='', CRtf=''):
+    working_area = '{}fits'.format(SRorCR)
+    twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
+    subset = twoD.ledger.select(_select_signal, 'TprimeB-{}'.format(signal), SRtf, CRtf)
+    from parse_card_SRCR_mcstats import parse_card
+    print('Making 2DAlphabet card')
+    twoD.MakeCard(subset, 'TprimeB-{}-SR{}-CR{}_area'.format(signal, SRtf, CRtf))
+    # rename the 2DAlphabet-produced card
+    print('Creating new card with automcstats for ttbar only in ttbarCR and SR pass')
+    execute_cmd(f'mv {working_area}/TprimeB-{signal}-SR{SRtf}-CR{CRtf}_area/card.txt {working_area}/TprimeB-{signal}-SR{SRtf}-CR{CRtf}_area/card_original_2DAlphabet.txt')
+    # create the new card with mcstats only in ttbarCR pass
+    parse_card(f'{working_area}/TprimeB-{signal}-SR{SRtf}-CR{CRtf}_area/card_original_2DAlphabet.txt')
+    execute_cmd(f'mv card_new.txt {working_area}/TprimeB-{signal}-SR{SRtf}-CR{CRtf}_area/card.txt')
+    execute_cmd(f'mv DEBUG.txt {working_area}/TprimeB-{signal}-SR{SRtf}-CR{CRtf}_area/DEBUG_card.txt')
+
 def test_fit(SRorCR='', signal='', SRtf='', CRtf='', defMinStrat=0, extra='--robustHesse 1', rMin=-1, rMax=10, verbosity=2, set_params=False):
     working_area = '{}fits'.format(SRorCR)
     twoD = TwoDAlphabet(working_area, '{}/runConfig.json'.format(working_area), loadPrevious=True)
@@ -313,6 +328,9 @@ if __name__ == "__main__":
     parser.add_argument('--make', dest='make',
                         action='store_true', 
                         help='If passed as argument, create 2DAlphabet workspace')
+    parser.add_argument('--makeCard',dest='makeCard',
+                        action='store_true',
+                        help='Create and modify the combined SR+CR datacard')
     parser.add_argument('--fit', dest='fit',
                         action='store_true',
                         help='If passed as argument, fit with the given TFs')
@@ -377,6 +395,8 @@ if __name__ == "__main__":
         MPHI = args.sigmass.split('-')[-1]
         fr = {'TprimeB-MT-MPHI':f'TprimeB-{MT}-{MPHI}'}
         test_make(args.workspace, fr=fr, json=args.json)
+    if args.makeCard:
+        makeCard(SRorCR=args.workspace, signal=args.sigmass, SRtf=args.SRtf, CRtf=args.CRtf)
     if args.fit:
         if (args.robustFit) and (args.robustHesse):
             raise ValueError('Cannot use both robustFit and robustHesse algorithms simultaneously') 

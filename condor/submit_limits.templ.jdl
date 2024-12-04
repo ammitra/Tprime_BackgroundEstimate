@@ -2,15 +2,15 @@
 
 executable              = $dir/${prefix}.sh
 should_transfer_files   = YES
-transfer_input_files    = /uscms_data/d3/ammitra/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/XHYbbWW/${cards_dir}/card.txt,/uscms_data/d3/ammitra/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/XHYbbWW/${base_root_dir}/base.root,/uscms_data/d3/ammitra/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/XHYbbWW/scripts/run_blinded_condor.sh
-transfer_output_files   = higgsCombine.AsymptoticLimits.mH125.${signame}.${seed}.root
+transfer_input_files    = /uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/${sig}_unblind_fits/base.root,/uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/${sig}_unblind_fits/TprimeB-${sig}-SR0x0-CR0x0_area/card.txt,/uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/${sig}_unblind_fits/initialFitWorkspace_${sig}.root
+transfer_output_files   = higgsCombine_${sig}_card.AsymptoticLimits.mH120.root,higgsCombine_${sig}_workspace.AsymptoticLimits.mH120.root
 when_to_transfer_output = ON_EXIT_OR_EVICT
 request_memory          = 3000
 use_x509userproxy       = true
 x509userproxy           = /uscms/home/ammitra/x509up_u56971
 
-output                  = $dir/logs/${prefix}.out
-error                   = $dir/logs/${prefix}.err
-log                     = $dir/logs/${prefix}.log
+output                  = $dir/logs/${prefix}_$sig.out
+error                   = $dir/logs/${prefix}_$sig.err
+log                     = $dir/logs/${prefix}_$sig.log
 
 Queue 1
