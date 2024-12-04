@@ -1,0 +1,16 @@
+#!/usr/bin/env condor_submit
+
+executable              = $dir/${prefix}.sh
+should_transfer_files   = YES
+transfer_input_files    = /uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/parse_card_SRCR_mcstats.py,/uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/${sig}_unblind_fits/base.root
+transfer_output_files   = fitDiagnosticsTest_${sig}.root,card_${sig}.txt,initialFitWorkspace_${sig}.root
+when_to_transfer_output = ON_EXIT_OR_EVICT
+request_memory          = 3000
+use_x509userproxy       = true
+x509userproxy           = /uscms/home/ammitra/x509up_u56971
+
+output                  = $dir/logs/${prefix}_$sig.out
+error                   = $dir/logs/${prefix}_$sig.err
+log                     = $dir/logs/${prefix}_$sig.log
+
+Queue 1

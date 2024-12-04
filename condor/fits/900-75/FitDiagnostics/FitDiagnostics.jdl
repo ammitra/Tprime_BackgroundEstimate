@@ -1,0 +1,16 @@
+#!/usr/bin/env condor_submit
+
+executable              = condor/fits/900-75/FitDiagnostics/FitDiagnostics.sh
+should_transfer_files   = YES
+transfer_input_files    = /uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/parse_card_SRCR_mcstats.py,/uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/900-75_unblind_fits/base.root
+transfer_output_files   = fitDiagnosticsTest_900-75.root,card_900-75.txt,initialFitWorkspace_900-75.root
+when_to_transfer_output = ON_EXIT_OR_EVICT
+request_memory          = 3000
+use_x509userproxy       = true
+x509userproxy           = /uscms/home/ammitra/x509up_u56971
+
+output                  = condor/fits/900-75/FitDiagnostics/logs/FitDiagnostics_900-75.out
+error                   = condor/fits/900-75/FitDiagnostics/logs/FitDiagnostics_900-75.err
+log                     = condor/fits/900-75/FitDiagnostics/logs/FitDiagnostics_900-75.log
+
+Queue 1

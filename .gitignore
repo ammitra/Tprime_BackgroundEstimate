@@ -1,0 +1,8 @@
+*unblind_fits/
+__pycache__/
+logs/
+*.tgz
+results_before_unblinding/
+docker_stderror
+data.txt
+debug_gof_unblind/

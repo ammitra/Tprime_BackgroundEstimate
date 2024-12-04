@@ -1,0 +1,1871 @@
+{
+    "NAME": "TPrimeToTH_TPhi",
+    "GLOBAL": {
+        "FILE": "THselection_$process.root",
+        "FILE_UP": "THselection_$process_$syst_up.root",
+        "FILE_DOWN": "THselection_$process_$syst_down.root",
+        "HIST": "MHvsMTH_$region__nominal",
+        "HIST_UP": "MHvsMTH_$region__$syst_up",
+        "HIST_DOWN": "MHvsMTH_$region__$syst_down",
+        "path": "root://cmseos.fnal.gov//store/user/ammitra/topHBoostedAllHad/selection",
+        "MCStatsPath": "autoMCstats",
+        "MCStatsFile": "$process_MCstats.root",
+        "HELP": "There is no way to specify nuisances for a given region only in 2DAlphabet. So instead we will give MCstats to ttbar in all regions and then use parse_card.py to remove the ttbar MC stat parameters from the CR/SR fail regions manually.",
+	    "SIGNAME": ["TprimeB-MT-MPHI"]
+    },
+    "REGIONS": {
+        "SR_fail": {
+            "PROCESSES": ["ttbar_16","ttbar_16APV","ttbar_17","ttbar_18","ZJets_16","ZJets_16APV","ZJets_17","ZJets_18","WJets_16","WJets_16APV","WJets_17","WJets_18","SIGNAME_16APV","SIGNAME_16","SIGNAME_17","SIGNAME_18"],
+            "BINNING": "default"
+        },
+        "SR_pass": {
+            "PROCESSES": ["ttbar_16","ttbar_16APV","ttbar_17","ttbar_18","ZJets_16","ZJets_16APV","ZJets_17","ZJets_18","WJets_16","WJets_16APV","WJets_17","WJets_18","SIGNAME_16APV","SIGNAME_16","SIGNAME_17","SIGNAME_18"],
+            "BINNING": "default"
+        },
+        "ttbarCR_fail": {
+            "PROCESSES": ["ttbar_16","ttbar_16APV","ttbar_17","ttbar_18","ZJets_16","ZJets_16APV","ZJets_17","ZJets_18","WJets_16","WJets_16APV","WJets_17","WJets_18","SIGNAME_16APV","SIGNAME_16","SIGNAME_17","SIGNAME_18"],
+            "BINNING": "default"
+        },
+        "ttbarCR_pass": {
+            "PROCESSES": ["ttbar_16","ttbar_16APV","ttbar_17","ttbar_18","ZJets_16","ZJets_16APV","ZJets_17","ZJets_18","WJets_16","WJets_16APV","WJets_17","WJets_18","SIGNAME_16APV","SIGNAME_16","SIGNAME_17","SIGNAME_18"],
+            "BINNING": "default"
+        }
+    },
+    "PROCESSES": {
+	"data_obs": {
+            "SYSTEMATICS":[],
+            "SCALE": 1.0,
+            "COLOR": "black",
+            "TYPE": "DATA",
+            "ALIAS": "Data_Run2",
+            "TITLE": "Data",
+            "LOC": "path/FILE:HIST"
+	},
+	"SIGNAME_16APV": {
+	    "SYSTEMATICS":["lumi_16","lumi_correlated","TriggerEff16","Pileup16","pdf","jer16","jes16","jmr16","jms16","PNetTop_tag","PNetXbb_tag"],
+            "SCALE": 1.0,
+            "COLOR": "black",
+            "TYPE": "SIGNAL",
+            "TITLE": "T^{#prime}_{1800}#to t#phi_{125}",
+            "LOC": "path/FILE:HIST"
+	},
+        "SIGNAME_16": {
+            "SYSTEMATICS":["lumi_16","lumi_correlated","TriggerEff16","Pileup16","pdf","jer16","jes16","jmr16","jms16","PNetTop_tag","PNetXbb_tag"],
+            "SCALE": 1.0,
+            "COLOR": "black",
+            "TYPE": "SIGNAL",
+            "TITLE": "T^{#prime}_{1800}#to t#phi_{125}",
+            "LOC": "path/FILE:HIST"
+        },
+        "SIGNAME_17": {
+            "SYSTEMATICS":["lumi_17","lumi_correlated","lumi_1718","TriggerEff17","Pileup17","pdf","jer17","jes17","jmr17","jms17","PNetTop_tag","PNetXbb_tag"],
+            "SCALE": 1.0,
+            "COLOR": "black",
+            "TYPE": "SIGNAL",
+            "TITLE": "T^{#prime}_{1800}#to t#phi_{125}",
+            "LOC": "path/FILE:HIST"
+        },
+        "SIGNAME_18": {
+            "SYSTEMATICS":["lumi_18","lumi_correlated","lumi_1718","TriggerEff18","Pileup18","pdf","jer18","jes18","jmr18","jms18","PNetTop_tag","PNetXbb_tag"],
+            "SCALE": 1.0,
+            "COLOR": "black",
+            "TYPE": "SIGNAL",
+            "TITLE": "T^{#prime}_{1800}#to t#phi_{125}",
+            "LOC": "path/FILE:HIST"
+        },
+        "ttbar_16APV": {
+            "SYSTEMATICS":["lumi_16","lumi_correlated","TptReweight","TriggerEff16","Pileup16","pdf","Prefire","jer16","jes16","jmr16","jms16","DAK8Top_tag","PNetXbb_mistag","SR_pass_mcstats_1_1","SR_pass_mcstats_1_2","SR_pass_mcstats_1_3","SR_pass_mcstats_1_4","SR_pass_mcstats_1_5","SR_pass_mcstats_1_6","SR_pass_mcstats_1_7","SR_pass_mcstats_1_8","SR_pass_mcstats_1_9","SR_pass_mcstats_1_10","SR_pass_mcstats_2_1","SR_pass_mcstats_2_2","SR_pass_mcstats_2_3","SR_pass_mcstats_2_4","SR_pass_mcstats_2_5","SR_pass_mcstats_2_6","SR_pass_mcstats_2_7","SR_pass_mcstats_2_8","SR_pass_mcstats_2_9","SR_pass_mcstats_2_10","SR_pass_mcstats_3_1","SR_pass_mcstats_3_3","SR_pass_mcstats_3_4","SR_pass_mcstats_3_5","SR_pass_mcstats_3_6","SR_pass_mcstats_3_7","SR_pass_mcstats_3_8","SR_pass_mcstats_3_9","SR_pass_mcstats_3_10","SR_pass_mcstats_4_1","SR_pass_mcstats_4_4","SR_pass_mcstats_4_5","SR_pass_mcstats_4_6","SR_pass_mcstats_4_7","SR_pass_mcstats_4_8","SR_pass_mcstats_4_9","SR_pass_mcstats_4_10","SR_pass_mcstats_5_1","SR_pass_mcstats_5_4","SR_pass_mcstats_5_5","SR_pass_mcstats_5_6","SR_pass_mcstats_5_7","SR_pass_mcstats_5_8","SR_pass_mcstats_5_9","SR_pass_mcstats_5_10","SR_pass_mcstats_6_1","SR_pass_mcstats_6_2","SR_pass_mcstats_6_3","SR_pass_mcstats_6_4","SR_pass_mcstats_6_5","SR_pass_mcstats_6_6","SR_pass_mcstats_6_7","SR_pass_mcstats_6_8","SR_pass_mcstats_6_9","SR_pass_mcstats_6_10","SR_pass_mcstats_7_1","SR_pass_mcstats_7_2","SR_pass_mcstats_7_3","SR_pass_mcstats_7_4","SR_pass_mcstats_7_5","SR_pass_mcstats_7_6","SR_pass_mcstats_7_7","SR_pass_mcstats_7_8","SR_pass_mcstats_7_9","SR_pass_mcstats_7_10","SR_pass_mcstats_8_1","SR_pass_mcstats_8_2","SR_pass_mcstats_8_3","SR_pass_mcstats_8_4","SR_pass_mcstats_8_5","SR_pass_mcstats_8_6","SR_pass_mcstats_8_7","SR_pass_mcstats_8_8","SR_pass_mcstats_8_9","SR_pass_mcstats_8_10","SR_pass_mcstats_9_2","SR_pass_mcstats_9_3","SR_pass_mcstats_9_4","SR_pass_mcstats_9_5","SR_pass_mcstats_9_6","SR_pass_mcstats_9_7","SR_pass_mcstats_9_8","SR_pass_mcstats_9_9","SR_pass_mcstats_9_10","SR_pass_mcstats_10_4","SR_pass_mcstats_10_5","SR_pass_mcstats_10_6","SR_pass_mcstats_10_7","SR_pass_mcstats_10_8","SR_pass_mcstats_10_9","SR_pass_mcstats_10_10","SR_pass_mcstats_11_4","SR_pass_mcstats_11_9","SR_pass_mcstats_11_10","ttbarCR_pass_mcstats_1_1","ttbarCR_pass_mcstats_1_2","ttbarCR_pass_mcstats_1_3","ttbarCR_pass_mcstats_1_4","ttbarCR_pass_mcstats_1_5","ttbarCR_pass_mcstats_1_6","ttbarCR_pass_mcstats_1_7","ttbarCR_pass_mcstats_1_8","ttbarCR_pass_mcstats_1_9","ttbarCR_pass_mcstats_1_10","ttbarCR_pass_mcstats_2_1","ttbarCR_pass_mcstats_2_2","ttbarCR_pass_mcstats_2_3","ttbarCR_pass_mcstats_2_4","ttbarCR_pass_mcstats_2_5","ttbarCR_pass_mcstats_2_6","ttbarCR_pass_mcstats_2_7","ttbarCR_pass_mcstats_2_8","ttbarCR_pass_mcstats_2_9","ttbarCR_pass_mcstats_2_10","ttbarCR_pass_mcstats_3_1","ttbarCR_pass_mcstats_3_2","ttbarCR_pass_mcstats_3_3","ttbarCR_pass_mcstats_3_4","ttbarCR_pass_mcstats_3_5","ttbarCR_pass_mcstats_3_6","ttbarCR_pass_mcstats_3_7","ttbarCR_pass_mcstats_3_8","ttbarCR_pass_mcstats_3_9","ttbarCR_pass_mcstats_3_10","ttbarCR_pass_mcstats_4_1","ttbarCR_pass_mcstats_4_2","ttbarCR_pass_mcstats_4_3","ttbarCR_pass_mcstats_4_4","ttbarCR_pass_mcstats_4_5","ttbarCR_pass_mcstats_4_6","ttbarCR_pass_mcstats_4_7","ttbarCR_pass_mcstats_4_8","ttbarCR_pass_mcstats_4_9","ttbarCR_pass_mcstats_4_10","ttbarCR_pass_mcstats_5_1","ttbarCR_pass_mcstats_5_2","ttbarCR_pass_mcstats_5_3","ttbarCR_pass_mcstats_5_4","ttbarCR_pass_mcstats_5_5","ttbarCR_pass_mcstats_5_6","ttbarCR_pass_mcstats_5_7","ttbarCR_pass_mcstats_5_8","ttbarCR_pass_mcstats_5_9","ttbarCR_pass_mcstats_5_10","ttbarCR_pass_mcstats_6_1","ttbarCR_pass_mcstats_6_2","ttbarCR_pass_mcstats_6_3","ttbarCR_pass_mcstats_6_4","ttbarCR_pass_mcstats_6_5","ttbarCR_pass_mcstats_6_6","ttbarCR_pass_mcstats_6_7","ttbarCR_pass_mcstats_6_8","ttbarCR_pass_mcstats_6_9","ttbarCR_pass_mcstats_6_10","ttbarCR_pass_mcstats_7_1","ttbarCR_pass_mcstats_7_2","ttbarCR_pass_mcstats_7_3","ttbarCR_pass_mcstats_7_4","ttbarCR_pass_mcstats_7_5","ttbarCR_pass_mcstats_7_6","ttbarCR_pass_mcstats_7_7","ttbarCR_pass_mcstats_7_8","ttbarCR_pass_mcstats_7_9","ttbarCR_pass_mcstats_7_10","ttbarCR_pass_mcstats_8_1","ttbarCR_pass_mcstats_8_2","ttbarCR_pass_mcstats_8_3","ttbarCR_pass_mcstats_8_4","ttbarCR_pass_mcstats_8_5","ttbarCR_pass_mcstats_8_6","ttbarCR_pass_mcstats_8_7","ttbarCR_pass_mcstats_8_8","ttbarCR_pass_mcstats_8_9","ttbarCR_pass_mcstats_8_10","ttbarCR_pass_mcstats_9_1","ttbarCR_pass_mcstats_9_2","ttbarCR_pass_mcstats_9_3","ttbarCR_pass_mcstats_9_4","ttbarCR_pass_mcstats_9_5","ttbarCR_pass_mcstats_9_6","ttbarCR_pass_mcstats_9_7","ttbarCR_pass_mcstats_9_8","ttbarCR_pass_mcstats_9_9","ttbarCR_pass_mcstats_9_10","ttbarCR_pass_mcstats_10_1","ttbarCR_pass_mcstats_10_2","ttbarCR_pass_mcstats_10_3","ttbarCR_pass_mcstats_10_4","ttbarCR_pass_mcstats_10_5","ttbarCR_pass_mcstats_10_6","ttbarCR_pass_mcstats_10_7","ttbarCR_pass_mcstats_10_8","ttbarCR_pass_mcstats_10_9","ttbarCR_pass_mcstats_10_10","ttbarCR_pass_mcstats_11_1","ttbarCR_pass_mcstats_11_2","ttbarCR_pass_mcstats_11_3","ttbarCR_pass_mcstats_11_4","ttbarCR_pass_mcstats_11_5","ttbarCR_pass_mcstats_11_6","ttbarCR_pass_mcstats_11_7","ttbarCR_pass_mcstats_11_8","ttbarCR_pass_mcstats_11_9","ttbarCR_pass_mcstats_11_10","SR_pass_mcstats_10_3","SR_pass_mcstats_11_7","SR_pass_mcstats_11_8","SR_pass_mcstats_11_5","SR_pass_mcstats_11_6","SR_pass_mcstats_10_2","SR_pass_mcstats_11_2"],
+            "SCALE": 1.0,
+            "COLOR": "red",
+            "TYPE": "BKG",
+            "TITLE": "t#bar{t}",
+            "LOC": "path/FILE:HIST"
+        },
+        "ttbar_16": {
+            "SYSTEMATICS":["lumi_16","lumi_correlated","TptReweight","TriggerEff16","Pileup16","pdf","Prefire","jer16","jes16","jmr16","jms16","DAK8Top_tag","PNetXbb_mistag","SR_pass_mcstats_1_1","SR_pass_mcstats_1_2","SR_pass_mcstats_1_3","SR_pass_mcstats_1_4","SR_pass_mcstats_1_5","SR_pass_mcstats_1_6","SR_pass_mcstats_1_7","SR_pass_mcstats_1_8","SR_pass_mcstats_1_9","SR_pass_mcstats_1_10","SR_pass_mcstats_2_1","SR_pass_mcstats_2_2","SR_pass_mcstats_2_3","SR_pass_mcstats_2_4","SR_pass_mcstats_2_5","SR_pass_mcstats_2_6","SR_pass_mcstats_2_7","SR_pass_mcstats_2_8","SR_pass_mcstats_2_9","SR_pass_mcstats_2_10","SR_pass_mcstats_3_1","SR_pass_mcstats_3_3","SR_pass_mcstats_3_4","SR_pass_mcstats_3_5","SR_pass_mcstats_3_6","SR_pass_mcstats_3_7","SR_pass_mcstats_3_8","SR_pass_mcstats_3_9","SR_pass_mcstats_3_10","SR_pass_mcstats_4_1","SR_pass_mcstats_4_4","SR_pass_mcstats_4_5","SR_pass_mcstats_4_6","SR_pass_mcstats_4_7","SR_pass_mcstats_4_8","SR_pass_mcstats_4_9","SR_pass_mcstats_4_10","SR_pass_mcstats_5_1","SR_pass_mcstats_5_4","SR_pass_mcstats_5_5","SR_pass_mcstats_5_6","SR_pass_mcstats_5_7","SR_pass_mcstats_5_8","SR_pass_mcstats_5_9","SR_pass_mcstats_5_10","SR_pass_mcstats_6_1","SR_pass_mcstats_6_2","SR_pass_mcstats_6_3","SR_pass_mcstats_6_4","SR_pass_mcstats_6_5","SR_pass_mcstats_6_6","SR_pass_mcstats_6_7","SR_pass_mcstats_6_8","SR_pass_mcstats_6_9","SR_pass_mcstats_6_10","SR_pass_mcstats_7_1","SR_pass_mcstats_7_2","SR_pass_mcstats_7_3","SR_pass_mcstats_7_4","SR_pass_mcstats_7_5","SR_pass_mcstats_7_6","SR_pass_mcstats_7_7","SR_pass_mcstats_7_8","SR_pass_mcstats_7_9","SR_pass_mcstats_7_10","SR_pass_mcstats_8_1","SR_pass_mcstats_8_2","SR_pass_mcstats_8_3","SR_pass_mcstats_8_4","SR_pass_mcstats_8_5","SR_pass_mcstats_8_6","SR_pass_mcstats_8_7","SR_pass_mcstats_8_8","SR_pass_mcstats_8_9","SR_pass_mcstats_8_10","SR_pass_mcstats_9_2","SR_pass_mcstats_9_3","SR_pass_mcstats_9_4","SR_pass_mcstats_9_5","SR_pass_mcstats_9_6","SR_pass_mcstats_9_7","SR_pass_mcstats_9_8","SR_pass_mcstats_9_9","SR_pass_mcstats_9_10","SR_pass_mcstats_10_4","SR_pass_mcstats_10_5","SR_pass_mcstats_10_6","SR_pass_mcstats_10_7","SR_pass_mcstats_10_8","SR_pass_mcstats_10_9","SR_pass_mcstats_10_10","SR_pass_mcstats_11_4","SR_pass_mcstats_11_9","SR_pass_mcstats_11_10","ttbarCR_pass_mcstats_1_1","ttbarCR_pass_mcstats_1_2","ttbarCR_pass_mcstats_1_3","ttbarCR_pass_mcstats_1_4","ttbarCR_pass_mcstats_1_5","ttbarCR_pass_mcstats_1_6","ttbarCR_pass_mcstats_1_7","ttbarCR_pass_mcstats_1_8","ttbarCR_pass_mcstats_1_9","ttbarCR_pass_mcstats_1_10","ttbarCR_pass_mcstats_2_1","ttbarCR_pass_mcstats_2_2","ttbarCR_pass_mcstats_2_3","ttbarCR_pass_mcstats_2_4","ttbarCR_pass_mcstats_2_5","ttbarCR_pass_mcstats_2_6","ttbarCR_pass_mcstats_2_7","ttbarCR_pass_mcstats_2_8","ttbarCR_pass_mcstats_2_9","ttbarCR_pass_mcstats_2_10","ttbarCR_pass_mcstats_3_1","ttbarCR_pass_mcstats_3_2","ttbarCR_pass_mcstats_3_3","ttbarCR_pass_mcstats_3_4","ttbarCR_pass_mcstats_3_5","ttbarCR_pass_mcstats_3_6","ttbarCR_pass_mcstats_3_7","ttbarCR_pass_mcstats_3_8","ttbarCR_pass_mcstats_3_9","ttbarCR_pass_mcstats_3_10","ttbarCR_pass_mcstats_4_1","ttbarCR_pass_mcstats_4_2","ttbarCR_pass_mcstats_4_3","ttbarCR_pass_mcstats_4_4","ttbarCR_pass_mcstats_4_5","ttbarCR_pass_mcstats_4_6","ttbarCR_pass_mcstats_4_7","ttbarCR_pass_mcstats_4_8","ttbarCR_pass_mcstats_4_9","ttbarCR_pass_mcstats_4_10","ttbarCR_pass_mcstats_5_1","ttbarCR_pass_mcstats_5_2","ttbarCR_pass_mcstats_5_3","ttbarCR_pass_mcstats_5_4","ttbarCR_pass_mcstats_5_5","ttbarCR_pass_mcstats_5_6","ttbarCR_pass_mcstats_5_7","ttbarCR_pass_mcstats_5_8","ttbarCR_pass_mcstats_5_9","ttbarCR_pass_mcstats_5_10","ttbarCR_pass_mcstats_6_1","ttbarCR_pass_mcstats_6_2","ttbarCR_pass_mcstats_6_3","ttbarCR_pass_mcstats_6_4","ttbarCR_pass_mcstats_6_5","ttbarCR_pass_mcstats_6_6","ttbarCR_pass_mcstats_6_7","ttbarCR_pass_mcstats_6_8","ttbarCR_pass_mcstats_6_9","ttbarCR_pass_mcstats_6_10","ttbarCR_pass_mcstats_7_1","ttbarCR_pass_mcstats_7_2","ttbarCR_pass_mcstats_7_3","ttbarCR_pass_mcstats_7_4","ttbarCR_pass_mcstats_7_5","ttbarCR_pass_mcstats_7_6","ttbarCR_pass_mcstats_7_7","ttbarCR_pass_mcstats_7_8","ttbarCR_pass_mcstats_7_9","ttbarCR_pass_mcstats_7_10","ttbarCR_pass_mcstats_8_1","ttbarCR_pass_mcstats_8_2","ttbarCR_pass_mcstats_8_3","ttbarCR_pass_mcstats_8_4","ttbarCR_pass_mcstats_8_5","ttbarCR_pass_mcstats_8_6","ttbarCR_pass_mcstats_8_7","ttbarCR_pass_mcstats_8_8","ttbarCR_pass_mcstats_8_9","ttbarCR_pass_mcstats_8_10","ttbarCR_pass_mcstats_9_1","ttbarCR_pass_mcstats_9_2","ttbarCR_pass_mcstats_9_3","ttbarCR_pass_mcstats_9_4","ttbarCR_pass_mcstats_9_5","ttbarCR_pass_mcstats_9_6","ttbarCR_pass_mcstats_9_7","ttbarCR_pass_mcstats_9_8","ttbarCR_pass_mcstats_9_9","ttbarCR_pass_mcstats_9_10","ttbarCR_pass_mcstats_10_1","ttbarCR_pass_mcstats_10_2","ttbarCR_pass_mcstats_10_3","ttbarCR_pass_mcstats_10_4","ttbarCR_pass_mcstats_10_5","ttbarCR_pass_mcstats_10_6","ttbarCR_pass_mcstats_10_7","ttbarCR_pass_mcstats_10_8","ttbarCR_pass_mcstats_10_9","ttbarCR_pass_mcstats_10_10","ttbarCR_pass_mcstats_11_1","ttbarCR_pass_mcstats_11_2","ttbarCR_pass_mcstats_11_3","ttbarCR_pass_mcstats_11_4","ttbarCR_pass_mcstats_11_5","ttbarCR_pass_mcstats_11_6","ttbarCR_pass_mcstats_11_7","ttbarCR_pass_mcstats_11_8","ttbarCR_pass_mcstats_11_9","ttbarCR_pass_mcstats_11_10","SR_pass_mcstats_10_3","SR_pass_mcstats_11_7","SR_pass_mcstats_11_8","SR_pass_mcstats_11_5","SR_pass_mcstats_11_6","SR_pass_mcstats_10_2","SR_pass_mcstats_11_2"],
+            "SCALE": 1.0,
+            "COLOR": "red",
+            "TYPE": "BKG",
+            "TITLE": "t#bar{t}",
+            "LOC": "path/FILE:HIST"
+        },
+        "ttbar_17": {
+            "SYSTEMATICS":["lumi_17","lumi_correlated","lumi_1718","TptReweight","TriggerEff17","Pileup17","pdf","Prefire","jer17","jes17","jmr17","jms17","DAK8Top_tag","PNetXbb_mistag","SR_pass_mcstats_1_1","SR_pass_mcstats_1_2","SR_pass_mcstats_1_3","SR_pass_mcstats_1_4","SR_pass_mcstats_1_5","SR_pass_mcstats_1_6","SR_pass_mcstats_1_7","SR_pass_mcstats_1_8","SR_pass_mcstats_1_9","SR_pass_mcstats_1_10","SR_pass_mcstats_2_1","SR_pass_mcstats_2_2","SR_pass_mcstats_2_3","SR_pass_mcstats_2_4","SR_pass_mcstats_2_5","SR_pass_mcstats_2_6","SR_pass_mcstats_2_7","SR_pass_mcstats_2_8","SR_pass_mcstats_2_9","SR_pass_mcstats_2_10","SR_pass_mcstats_3_1","SR_pass_mcstats_3_3","SR_pass_mcstats_3_4","SR_pass_mcstats_3_5","SR_pass_mcstats_3_6","SR_pass_mcstats_3_7","SR_pass_mcstats_3_8","SR_pass_mcstats_3_9","SR_pass_mcstats_3_10","SR_pass_mcstats_4_1","SR_pass_mcstats_4_4","SR_pass_mcstats_4_5","SR_pass_mcstats_4_6","SR_pass_mcstats_4_7","SR_pass_mcstats_4_8","SR_pass_mcstats_4_9","SR_pass_mcstats_4_10","SR_pass_mcstats_5_1","SR_pass_mcstats_5_4","SR_pass_mcstats_5_5","SR_pass_mcstats_5_6","SR_pass_mcstats_5_7","SR_pass_mcstats_5_8","SR_pass_mcstats_5_9","SR_pass_mcstats_5_10","SR_pass_mcstats_6_1","SR_pass_mcstats_6_2","SR_pass_mcstats_6_3","SR_pass_mcstats_6_4","SR_pass_mcstats_6_5","SR_pass_mcstats_6_6","SR_pass_mcstats_6_7","SR_pass_mcstats_6_8","SR_pass_mcstats_6_9","SR_pass_mcstats_6_10","SR_pass_mcstats_7_1","SR_pass_mcstats_7_2","SR_pass_mcstats_7_3","SR_pass_mcstats_7_4","SR_pass_mcstats_7_5","SR_pass_mcstats_7_6","SR_pass_mcstats_7_7","SR_pass_mcstats_7_8","SR_pass_mcstats_7_9","SR_pass_mcstats_7_10","SR_pass_mcstats_8_1","SR_pass_mcstats_8_2","SR_pass_mcstats_8_3","SR_pass_mcstats_8_4","SR_pass_mcstats_8_5","SR_pass_mcstats_8_6","SR_pass_mcstats_8_7","SR_pass_mcstats_8_8","SR_pass_mcstats_8_9","SR_pass_mcstats_8_10","SR_pass_mcstats_9_2","SR_pass_mcstats_9_3","SR_pass_mcstats_9_4","SR_pass_mcstats_9_5","SR_pass_mcstats_9_6","SR_pass_mcstats_9_7","SR_pass_mcstats_9_8","SR_pass_mcstats_9_9","SR_pass_mcstats_9_10","SR_pass_mcstats_10_4","SR_pass_mcstats_10_5","SR_pass_mcstats_10_6","SR_pass_mcstats_10_7","SR_pass_mcstats_10_8","SR_pass_mcstats_10_9","SR_pass_mcstats_10_10","SR_pass_mcstats_11_4","SR_pass_mcstats_11_9","SR_pass_mcstats_11_10","ttbarCR_pass_mcstats_1_1","ttbarCR_pass_mcstats_1_2","ttbarCR_pass_mcstats_1_3","ttbarCR_pass_mcstats_1_4","ttbarCR_pass_mcstats_1_5","ttbarCR_pass_mcstats_1_6","ttbarCR_pass_mcstats_1_7","ttbarCR_pass_mcstats_1_8","ttbarCR_pass_mcstats_1_9","ttbarCR_pass_mcstats_1_10","ttbarCR_pass_mcstats_2_1","ttbarCR_pass_mcstats_2_2","ttbarCR_pass_mcstats_2_3","ttbarCR_pass_mcstats_2_4","ttbarCR_pass_mcstats_2_5","ttbarCR_pass_mcstats_2_6","ttbarCR_pass_mcstats_2_7","ttbarCR_pass_mcstats_2_8","ttbarCR_pass_mcstats_2_9","ttbarCR_pass_mcstats_2_10","ttbarCR_pass_mcstats_3_1","ttbarCR_pass_mcstats_3_2","ttbarCR_pass_mcstats_3_3","ttbarCR_pass_mcstats_3_4","ttbarCR_pass_mcstats_3_5","ttbarCR_pass_mcstats_3_6","ttbarCR_pass_mcstats_3_7","ttbarCR_pass_mcstats_3_8","ttbarCR_pass_mcstats_3_9","ttbarCR_pass_mcstats_3_10","ttbarCR_pass_mcstats_4_1","ttbarCR_pass_mcstats_4_2","ttbarCR_pass_mcstats_4_3","ttbarCR_pass_mcstats_4_4","ttbarCR_pass_mcstats_4_5","ttbarCR_pass_mcstats_4_6","ttbarCR_pass_mcstats_4_7","ttbarCR_pass_mcstats_4_8","ttbarCR_pass_mcstats_4_9","ttbarCR_pass_mcstats_4_10","ttbarCR_pass_mcstats_5_1","ttbarCR_pass_mcstats_5_2","ttbarCR_pass_mcstats_5_3","ttbarCR_pass_mcstats_5_4","ttbarCR_pass_mcstats_5_5","ttbarCR_pass_mcstats_5_6","ttbarCR_pass_mcstats_5_7","ttbarCR_pass_mcstats_5_8","ttbarCR_pass_mcstats_5_9","ttbarCR_pass_mcstats_5_10","ttbarCR_pass_mcstats_6_1","ttbarCR_pass_mcstats_6_2","ttbarCR_pass_mcstats_6_3","ttbarCR_pass_mcstats_6_4","ttbarCR_pass_mcstats_6_5","ttbarCR_pass_mcstats_6_6","ttbarCR_pass_mcstats_6_7","ttbarCR_pass_mcstats_6_8","ttbarCR_pass_mcstats_6_9","ttbarCR_pass_mcstats_6_10","ttbarCR_pass_mcstats_7_1","ttbarCR_pass_mcstats_7_2","ttbarCR_pass_mcstats_7_3","ttbarCR_pass_mcstats_7_4","ttbarCR_pass_mcstats_7_5","ttbarCR_pass_mcstats_7_6","ttbarCR_pass_mcstats_7_7","ttbarCR_pass_mcstats_7_8","ttbarCR_pass_mcstats_7_9","ttbarCR_pass_mcstats_7_10","ttbarCR_pass_mcstats_8_1","ttbarCR_pass_mcstats_8_2","ttbarCR_pass_mcstats_8_3","ttbarCR_pass_mcstats_8_4","ttbarCR_pass_mcstats_8_5","ttbarCR_pass_mcstats_8_6","ttbarCR_pass_mcstats_8_7","ttbarCR_pass_mcstats_8_8","ttbarCR_pass_mcstats_8_9","ttbarCR_pass_mcstats_8_10","ttbarCR_pass_mcstats_9_1","ttbarCR_pass_mcstats_9_2","ttbarCR_pass_mcstats_9_3","ttbarCR_pass_mcstats_9_4","ttbarCR_pass_mcstats_9_5","ttbarCR_pass_mcstats_9_6","ttbarCR_pass_mcstats_9_7","ttbarCR_pass_mcstats_9_8","ttbarCR_pass_mcstats_9_9","ttbarCR_pass_mcstats_9_10","ttbarCR_pass_mcstats_10_1","ttbarCR_pass_mcstats_10_2","ttbarCR_pass_mcstats_10_3","ttbarCR_pass_mcstats_10_4","ttbarCR_pass_mcstats_10_5","ttbarCR_pass_mcstats_10_6","ttbarCR_pass_mcstats_10_7","ttbarCR_pass_mcstats_10_8","ttbarCR_pass_mcstats_10_9","ttbarCR_pass_mcstats_10_10","ttbarCR_pass_mcstats_11_1","ttbarCR_pass_mcstats_11_2","ttbarCR_pass_mcstats_11_3","ttbarCR_pass_mcstats_11_4","ttbarCR_pass_mcstats_11_5","ttbarCR_pass_mcstats_11_6","ttbarCR_pass_mcstats_11_7","ttbarCR_pass_mcstats_11_8","ttbarCR_pass_mcstats_11_9","ttbarCR_pass_mcstats_11_10","SR_pass_mcstats_10_3","SR_pass_mcstats_11_7","SR_pass_mcstats_11_8","SR_pass_mcstats_11_5","SR_pass_mcstats_11_6","SR_pass_mcstats_10_2","SR_pass_mcstats_11_2"],
+            "SCALE": 1.0,
+            "COLOR": "red",
+            "TYPE": "BKG",
+            "TITLE": "t#bar{t}",
+            "LOC": "path/FILE:HIST"
+        },
+        "ttbar_18": {
+            "SYSTEMATICS":["lumi_18","lumi_correlated","lumi_1718","TptReweight","TriggerEff18","Pileup18","pdf","jer18","jes18","jmr18","jms18","DAK8Top_tag","PNetXbb_mistag","SR_pass_mcstats_1_1","SR_pass_mcstats_1_2","SR_pass_mcstats_1_3","SR_pass_mcstats_1_4","SR_pass_mcstats_1_5","SR_pass_mcstats_1_6","SR_pass_mcstats_1_7","SR_pass_mcstats_1_8","SR_pass_mcstats_1_9","SR_pass_mcstats_1_10","SR_pass_mcstats_2_1","SR_pass_mcstats_2_2","SR_pass_mcstats_2_3","SR_pass_mcstats_2_4","SR_pass_mcstats_2_5","SR_pass_mcstats_2_6","SR_pass_mcstats_2_7","SR_pass_mcstats_2_8","SR_pass_mcstats_2_9","SR_pass_mcstats_2_10","SR_pass_mcstats_3_1","SR_pass_mcstats_3_3","SR_pass_mcstats_3_4","SR_pass_mcstats_3_5","SR_pass_mcstats_3_6","SR_pass_mcstats_3_7","SR_pass_mcstats_3_8","SR_pass_mcstats_3_9","SR_pass_mcstats_3_10","SR_pass_mcstats_4_1","SR_pass_mcstats_4_4","SR_pass_mcstats_4_5","SR_pass_mcstats_4_6","SR_pass_mcstats_4_7","SR_pass_mcstats_4_8","SR_pass_mcstats_4_9","SR_pass_mcstats_4_10","SR_pass_mcstats_5_1","SR_pass_mcstats_5_4","SR_pass_mcstats_5_5","SR_pass_mcstats_5_6","SR_pass_mcstats_5_7","SR_pass_mcstats_5_8","SR_pass_mcstats_5_9","SR_pass_mcstats_5_10","SR_pass_mcstats_6_1","SR_pass_mcstats_6_2","SR_pass_mcstats_6_3","SR_pass_mcstats_6_4","SR_pass_mcstats_6_5","SR_pass_mcstats_6_6","SR_pass_mcstats_6_7","SR_pass_mcstats_6_8","SR_pass_mcstats_6_9","SR_pass_mcstats_6_10","SR_pass_mcstats_7_1","SR_pass_mcstats_7_2","SR_pass_mcstats_7_3","SR_pass_mcstats_7_4","SR_pass_mcstats_7_5","SR_pass_mcstats_7_6","SR_pass_mcstats_7_7","SR_pass_mcstats_7_8","SR_pass_mcstats_7_9","SR_pass_mcstats_7_10","SR_pass_mcstats_8_1","SR_pass_mcstats_8_2","SR_pass_mcstats_8_3","SR_pass_mcstats_8_4","SR_pass_mcstats_8_5","SR_pass_mcstats_8_6","SR_pass_mcstats_8_7","SR_pass_mcstats_8_8","SR_pass_mcstats_8_9","SR_pass_mcstats_8_10","SR_pass_mcstats_9_2","SR_pass_mcstats_9_3","SR_pass_mcstats_9_4","SR_pass_mcstats_9_5","SR_pass_mcstats_9_6","SR_pass_mcstats_9_7","SR_pass_mcstats_9_8","SR_pass_mcstats_9_9","SR_pass_mcstats_9_10","SR_pass_mcstats_10_4","SR_pass_mcstats_10_5","SR_pass_mcstats_10_6","SR_pass_mcstats_10_7","SR_pass_mcstats_10_8","SR_pass_mcstats_10_9","SR_pass_mcstats_10_10","SR_pass_mcstats_11_4","SR_pass_mcstats_11_9","SR_pass_mcstats_11_10","ttbarCR_pass_mcstats_1_1","ttbarCR_pass_mcstats_1_2","ttbarCR_pass_mcstats_1_3","ttbarCR_pass_mcstats_1_4","ttbarCR_pass_mcstats_1_5","ttbarCR_pass_mcstats_1_6","ttbarCR_pass_mcstats_1_7","ttbarCR_pass_mcstats_1_8","ttbarCR_pass_mcstats_1_9","ttbarCR_pass_mcstats_1_10","ttbarCR_pass_mcstats_2_1","ttbarCR_pass_mcstats_2_2","ttbarCR_pass_mcstats_2_3","ttbarCR_pass_mcstats_2_4","ttbarCR_pass_mcstats_2_5","ttbarCR_pass_mcstats_2_6","ttbarCR_pass_mcstats_2_7","ttbarCR_pass_mcstats_2_8","ttbarCR_pass_mcstats_2_9","ttbarCR_pass_mcstats_2_10","ttbarCR_pass_mcstats_3_1","ttbarCR_pass_mcstats_3_2","ttbarCR_pass_mcstats_3_3","ttbarCR_pass_mcstats_3_4","ttbarCR_pass_mcstats_3_5","ttbarCR_pass_mcstats_3_6","ttbarCR_pass_mcstats_3_7","ttbarCR_pass_mcstats_3_8","ttbarCR_pass_mcstats_3_9","ttbarCR_pass_mcstats_3_10","ttbarCR_pass_mcstats_4_1","ttbarCR_pass_mcstats_4_2","ttbarCR_pass_mcstats_4_3","ttbarCR_pass_mcstats_4_4","ttbarCR_pass_mcstats_4_5","ttbarCR_pass_mcstats_4_6","ttbarCR_pass_mcstats_4_7","ttbarCR_pass_mcstats_4_8","ttbarCR_pass_mcstats_4_9","ttbarCR_pass_mcstats_4_10","ttbarCR_pass_mcstats_5_1","ttbarCR_pass_mcstats_5_2","ttbarCR_pass_mcstats_5_3","ttbarCR_pass_mcstats_5_4","ttbarCR_pass_mcstats_5_5","ttbarCR_pass_mcstats_5_6","ttbarCR_pass_mcstats_5_7","ttbarCR_pass_mcstats_5_8","ttbarCR_pass_mcstats_5_9","ttbarCR_pass_mcstats_5_10","ttbarCR_pass_mcstats_6_1","ttbarCR_pass_mcstats_6_2","ttbarCR_pass_mcstats_6_3","ttbarCR_pass_mcstats_6_4","ttbarCR_pass_mcstats_6_5","ttbarCR_pass_mcstats_6_6","ttbarCR_pass_mcstats_6_7","ttbarCR_pass_mcstats_6_8","ttbarCR_pass_mcstats_6_9","ttbarCR_pass_mcstats_6_10","ttbarCR_pass_mcstats_7_1","ttbarCR_pass_mcstats_7_2","ttbarCR_pass_mcstats_7_3","ttbarCR_pass_mcstats_7_4","ttbarCR_pass_mcstats_7_5","ttbarCR_pass_mcstats_7_6","ttbarCR_pass_mcstats_7_7","ttbarCR_pass_mcstats_7_8","ttbarCR_pass_mcstats_7_9","ttbarCR_pass_mcstats_7_10","ttbarCR_pass_mcstats_8_1","ttbarCR_pass_mcstats_8_2","ttbarCR_pass_mcstats_8_3","ttbarCR_pass_mcstats_8_4","ttbarCR_pass_mcstats_8_5","ttbarCR_pass_mcstats_8_6","ttbarCR_pass_mcstats_8_7","ttbarCR_pass_mcstats_8_8","ttbarCR_pass_mcstats_8_9","ttbarCR_pass_mcstats_8_10","ttbarCR_pass_mcstats_9_1","ttbarCR_pass_mcstats_9_2","ttbarCR_pass_mcstats_9_3","ttbarCR_pass_mcstats_9_4","ttbarCR_pass_mcstats_9_5","ttbarCR_pass_mcstats_9_6","ttbarCR_pass_mcstats_9_7","ttbarCR_pass_mcstats_9_8","ttbarCR_pass_mcstats_9_9","ttbarCR_pass_mcstats_9_10","ttbarCR_pass_mcstats_10_1","ttbarCR_pass_mcstats_10_2","ttbarCR_pass_mcstats_10_3","ttbarCR_pass_mcstats_10_4","ttbarCR_pass_mcstats_10_5","ttbarCR_pass_mcstats_10_6","ttbarCR_pass_mcstats_10_7","ttbarCR_pass_mcstats_10_8","ttbarCR_pass_mcstats_10_9","ttbarCR_pass_mcstats_10_10","ttbarCR_pass_mcstats_11_1","ttbarCR_pass_mcstats_11_2","ttbarCR_pass_mcstats_11_3","ttbarCR_pass_mcstats_11_4","ttbarCR_pass_mcstats_11_5","ttbarCR_pass_mcstats_11_6","ttbarCR_pass_mcstats_11_7","ttbarCR_pass_mcstats_11_8","ttbarCR_pass_mcstats_11_9","ttbarCR_pass_mcstats_11_10","SR_pass_mcstats_10_3","SR_pass_mcstats_11_7","SR_pass_mcstats_11_8","SR_pass_mcstats_11_5","SR_pass_mcstats_11_6","SR_pass_mcstats_10_2","SR_pass_mcstats_11_2"],
+            "SCALE": 1.0,
+            "COLOR": "red",
+            "TYPE": "BKG",
+            "TITLE": "t#bar{t}",
+            "LOC": "path/FILE:HIST"
+        },
+        "ZJets_16APV": {
+            "SYSTEMATICS":["lumi_16","lumi_correlated","TriggerEff16","Pileup16","pdf","jer16","jes16","jmr16","jms16"],
+            "SCALE": 1.0,
+            "COLOR": "blue",
+            "TYPE": "BKG",
+            "TITLE": "Z(q#bar{q})",
+            "LOC": "path/FILE:HIST"
+        },
+        "ZJets_16": {
+            "SYSTEMATICS":["lumi_16","lumi_correlated","TriggerEff16","Pileup16","pdf","jer16","jes16","jmr16","jms16"],
+            "SCALE": 1.0,
+            "COLOR": "blue",
+            "TYPE": "BKG",
+            "TITLE": "Z(q#bar{q})",
+            "LOC": "path/FILE:HIST"
+        },
+        "ZJets_17": {
+            "SYSTEMATICS":["lumi_17","lumi_correlated","lumi_1718","TriggerEff17","Pileup17","pdf","jer17","jes17","jmr17","jms17"],
+            "SCALE": 1.0,
+            "COLOR": "blue",
+            "TYPE": "BKG",
+            "TITLE": "Z(q#bar{q})",
+            "LOC": "path/FILE:HIST"
+        },
+        "ZJets_18": {
+            "SYSTEMATICS":["lumi_18","lumi_correlated","lumi_1718","TriggerEff18","Pileup18","pdf","jer18","jes18","jmr18","jms18"],
+            "SCALE": 1.0,
+            "COLOR": "blue",
+            "TYPE": "BKG",
+            "TITLE": "Z(q#bar{q})",
+            "LOC": "path/FILE:HIST"
+        },
+        "WJets_16APV": {
+            "SYSTEMATICS":["lumi_16","lumi_correlated","TriggerEff16","Pileup16","pdf","jer16","jes16","jmr16","jms16"],
+            "SCALE": 1.0,
+            "COLOR": "green",
+            "TYPE": "BKG",
+            "TITLE": "W(q#bar{q})",
+            "LOC": "path/FILE:HIST"
+        },
+        "WJets_16": {
+            "SYSTEMATICS":["lumi_16","lumi_correlated","TriggerEff16","Pileup16","pdf","jer16","jes16","jmr16","jms16"],
+            "SCALE": 1.0,
+            "COLOR": "green",
+            "TYPE": "BKG",
+            "TITLE": "W(q#bar{q})",
+            "LOC": "path/FILE:HIST"
+        },
+        "WJets_17": {
+            "SYSTEMATICS":["lumi_17","lumi_correlated","lumi_1718","TriggerEff17","Pileup17","pdf","jer17","jes17","jmr17","jms17"],
+            "SCALE": 1.0,
+            "COLOR": "green",
+            "TYPE": "BKG",
+            "TITLE": "W(q#bar{q})",
+            "LOC": "path/FILE:HIST"
+        },
+        "WJets_18": {
+            "SYSTEMATICS":["lumi_18","lumi_correlated","lumi_1718","TriggerEff18","Pileup18","pdf","jer18","jes18","jmr18","jms18"],
+            "SCALE": 1.0,
+            "COLOR": "green",
+            "TYPE": "BKG",
+            "TITLE": "W(q#bar{q})",
+            "LOC": "path/FILE:HIST"
+        }
+    },
+    "SYSTEMATICS": {
+        "lumi_16": {
+            "CODE": 0,
+            "VAL": 1.0026
+        },
+        "lumi_17": {
+            "CODE": 0,
+            "VAL": 1.006
+        },
+        "lumi_18": {
+            "CODE": 0,
+            "VAL": 1.0065
+        },
+        "lumi_1718": {
+            "CODE": 0,
+            "VAL": 1.0027
+        },
+        "lumi_correlated": {
+            "CODE": 0,
+            "VAL": 1.013
+        },
+        "ttbar_xsec": {
+            "VAL": 1.2
+        },
+        "w_xsec": {
+            "VAL": 1.2
+        },
+        "z_xsec": {
+            "VAL": 1.2
+        },
+        "DAK8Top_tag": {
+            "ALIAS": "DAK8_Top_tag_weight",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "PNetTop_tag": {
+                "ALIAS": "PNet_Top_tag_weight",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "PNetXbb_tag": {
+            "ALIAS": "PNetMD_Xbb_tag_weight", 
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "PNetXbb_mistag": {
+            "ALIAS": "PNetMD_Xbb_mistag_weight",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "TptReweight": {
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "Prefire": {
+            "ALIAS": "L1PreFireWeight",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "Pileup": {
+            "ALIAS": "Pileup",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "Pileup16": {
+            "ALIAS": "Pileup",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "Pileup17": {
+            "ALIAS": "Pileup",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "Pileup18": {
+            "ALIAS": "Pileup",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "TriggerEff16": {
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "TriggerEff17": {
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "TriggerEff18": {
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "pdf": {
+            "ALIAS": "Pdfweight",
+            "UP": "path/FILE:HIST_UP",
+            "DOWN": "path/FILE:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+        "jmr16": {
+            "ALIAS": "JMR",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jmr17": {
+            "ALIAS": "JMR",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jmr18": {
+            "ALIAS": "JMR",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jms16": {
+            "ALIAS": "JMS",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jms17": {
+            "ALIAS": "JMS",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jms18": {
+            "ALIAS": "JMS",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jes": {
+            "ALIAS": "JES",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jes16": {
+            "ALIAS": "JES",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jes17": {
+            "ALIAS": "JES",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jes18": {
+            "ALIAS": "JES",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jer16": {
+            "ALIAS": "JER",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jer17": {
+            "ALIAS": "JER",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "jer18": {
+            "ALIAS": "JER",
+            "UP": "path/FILE_UP:HIST",
+            "DOWN": "path/FILE_DOWN:HIST",
+            "SIGMA": 1.0
+        },
+        "SR_pass_mcstats_1_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_1_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_1_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_1_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_1_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_1_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_1_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_1_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_1_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_1_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_2_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_3_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_3_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_3_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_3_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_3_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_3_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_3_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_3_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_3_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_4_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_4_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_4_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_4_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_4_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_4_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_4_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_4_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_5_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_5_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_5_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_5_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_5_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_5_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_5_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_5_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_6_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_7_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_8_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_9_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_9_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_9_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_9_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_9_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_9_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_9_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_9_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_9_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_10_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_10_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_10_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_10_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_10_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_10_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_10_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_11_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_11_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_11_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_1_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_2_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_3_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_4_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_5_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_6_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_7_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_8_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_9_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_10_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_1": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_4": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_9": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "ttbarCR_pass_mcstats_11_10": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_10_3": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_11_7": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_11_8": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_11_5": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_11_6": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_10_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        },
+
+
+        "SR_pass_mcstats_11_2": {
+            "UP": "MCStatsPath/MCStatsFile:HIST_UP",
+            "DOWN": "MCStatsPath/MCStatsFile:HIST_DOWN",
+            "SIGMA": 1.0
+        }
+
+    },
+    "BINNING": {
+        "default": {
+            "X": {
+                "NAME": "jetmass",
+                "TITLE": "m_{#phi}",
+		"BINS": [60,80,100,120,140,160,180,200,220,260,300,560],
+		"SIGSTART": 120, 
+		"SIGEND": 160,
+                "MIN_OLD": 60,
+                "MAX_OLD": 240,
+                "NBINS_OLD": 12,
+                "SIGSTART_OLD": 105,
+                "SIGEND_OLD": 150
+            },
+            "Y": {
+                "NAME": "resmass",
+                "TITLE": "m_{t#phi}",
+		"BINS": [800,900,1000,1100,1200,1300,1400,1500,1700,2000,3500],
+                "SLICES": [800, 1200, 1400, 3500]
+            }
+        }
+    },
+    "OPTIONS": {
+        "blindedPlots": [],
+        "blindedFit": [],
+        "plotPrefitSigInFitB": true,
+        "plotUncerts": false,
+	    "plotEvtsPerUnit": true,
+        "plotTitles":false,
+	    "plotTemplateComparisons": false,
+        "year": 2
+    }
+
+}

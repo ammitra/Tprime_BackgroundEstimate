@@ -1,0 +1,16 @@
+#!/usr/bin/env condor_submit
+
+executable              = $dir/${prefix}.sh
+should_transfer_files   = YES
+transfer_input_files    = /uscms_data/d3/ammitra/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/XHYbbWW/${cards_dir}/card.txt,/uscms_data/d3/ammitra/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/XHYbbWW/${base_root_dir}/base.root,/uscms_data/d3/ammitra/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/XHYbbWW/scripts/run_blinded_condor.sh
+transfer_output_files   = higgsCombine.AsymptoticLimits.mH125.${signame}.${seed}.root
+when_to_transfer_output = ON_EXIT_OR_EVICT
+request_memory          = 3000
+use_x509userproxy       = true
+x509userproxy           = /uscms/home/ammitra/x509up_u56971
+
+output                  = $dir/logs/${prefix}.out
+error                   = $dir/logs/${prefix}.err
+log                     = $dir/logs/${prefix}.log
+
+Queue 1
