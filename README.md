@@ -120,6 +120,8 @@ python jointSRttbarCR.py -s $sig -w "$sig"_ --SRtf $SRtf --CRtf $CRtf --strat $s
 
 ### 7) Limits 
 
+**NOTE:** These limits will be unblinded, and will include the observation in the output ROOT file.
+
 Run the limits on condor:
 ```
 python condor/submit_limits.py --sig $sig --seed $seed 
@@ -129,9 +131,41 @@ Then move them to their appropriate signal workspace directories using
 python scripts/handle_limits_CondorOutput.py
 ```
 
+**NOTE:** There are three different ways to run the limits:
+
+1. Run using the Combine card (`-d card.txt`)
+
+2. Run using the post-fit workspace snapshot (`-d initialFitWorkspace_$sig.root --snapshotName initialFit`) with the full SR+CR statistical model
+
+3. Run using the post-fit workspace snapshot, but with the CR masked and all CR-specific nuisances frozen and zeroed. 
+
+Method (1) takes a very long time and often fails to produce proper limits, we see many warnings like `WARNING: Best fit of asimov dataset is at r = 0.220944 (0.220944 times rMax), while it should be at zero`. These can be debugged following the suggestions from the [HIG PAG](https://twiki.cern.ch/twiki/bin/view/CMS/HiggsWG/HiggsPAGPreapprovalChecks), but the results are unreliable (observed limit is *far* below expected).
+
+Method (2) gives reasonable results, but takes upwards of an hour. This is most likely due to the extremely complicated model and calculation involving the (signal-depleted) $t\bar{t}$ control region. 
+
+Method (3) works by performing the `AsymptoticLimit` calculation in the SR *only*, by masking the CR and freezing/zeroing all CR-specific nuisances (e.g. CR transfer function, CR ttbar MC stat bin params, DAK8 top tagging). Dropping the CR is justified because the limits should not be calculated in the region where there is virtually no signal, so removing it from the likelihood will serve only to speed up the calculation with no impact on the limit. The post-SR+CR-fit workspace is used to load the NPs for the limit calculation, so the CR has already served its purpose. 
+
 ### 8) Plot limits
 
+2D limits as a function of $(m_{T^\prime}, m_\phi)$:
+```
+python scripts/2Dlims.py
+```
 
+1D limits as a function of $m_\phi$ for different $m_{T^\prime}$:
+```
+python scripts/1Dlims_mPhi.py
+```
+
+1D limits as a function of $m_{T^\prime}$ for different $m_{\phi}$:
+```
+python scripts/1Dlims_mT.py
+```
+
+1D limits as a function of $m_{T^\prime}$ for fixed $m_\phi = 125$ GeV:
+```
+python scripts/HiggsLimits.py
+```
 
 ### Notes on automcstats and other region-specific nuisances
 

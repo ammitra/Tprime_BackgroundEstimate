@@ -8,3 +8,5 @@ data.txt
 debug_gof_unblind/
 condor/fits/
 failed_*.txt
+plots/
+condor/limits/

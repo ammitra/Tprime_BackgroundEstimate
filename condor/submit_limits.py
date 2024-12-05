@@ -62,10 +62,17 @@ def main(args):
 
 
     # Arguments for condor shell script
+    # The arguments for the masked CR have to be added here, annoyingly
+    #   ${maskCRargs}
+    #   ${setCRparams} 
+    #   ${freezeCRparams}
     localsh = f"{local_dir}/{prefix}.sh"
     sh_args = {
         "sig": args.sig,
-        "seed": args.seed
+        "seed": args.seed,
+        "maskCRargs": "mask_SR_fail_LOW=0,mask_SR_fail_SIG=0,mask_SR_fail_HIGH=0,mask_SR_pass_LOW=0,mask_SR_pass_SIG=0,mask_SR_pass_HIGH=0,mask_ttbarCR_fail_LOW=1,mask_ttbarCR_fail_SIG=1,mask_ttbarCR_fail_HIGH=1,mask_ttbarCR_pass_LOW=1,mask_ttbarCR_pass_SIG=1,mask_ttbarCR_pass_HIGH=1",
+        "setCRparams": "var{ttbarCR.*_mcstats.*}=0,rgx{ttbarCR.*_mcstats.*}=0,var{Background_ttbarCR.*_bin.*}=0,rgx{Background_ttbarCR.*_bin.*}=0,Background_ttbarCR_rpf_0x0_par0=0,DAK8Top_tag=0",
+        "freezeCRparams": "var{ttbarCR.*_mcstats.*},rgx{ttbarCR.*_mcstats.*},var{Background_ttbarCR.*_bin.*},rgx{Background_ttbarCR.*_bin.*},DAK8Top_tag,Background_ttbarCR_rpf_0x0_par0"
     }
     write_template(sh_templ, localsh, sh_args)
 

@@ -3,7 +3,8 @@
 executable              = $dir/${prefix}.sh
 should_transfer_files   = YES
 transfer_input_files    = /uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/${sig}_unblind_fits/base.root,/uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/${sig}_unblind_fits/TprimeB-${sig}-SR0x0-CR0x0_area/card.txt,/uscms/home/ammitra/nobackup/2DAlphabet/fitting/CMSSW_14_1_0_pre4/src/Tprime/${sig}_unblind_fits/initialFitWorkspace_${sig}.root
-transfer_output_files   = higgsCombine_${sig}_card.AsymptoticLimits.mH120.root,higgsCombine_${sig}_workspace.AsymptoticLimits.mH120.root
+#transfer_output_files   = higgsCombine_${sig}_card.AsymptoticLimits.mH120.root,higgsCombine_${sig}_workspace.AsymptoticLimits.mH120.root,higgsCombine_${sig}_noCR_workspace.AsymptoticLimits.mH120.root
+transfer_output_files   = higgsCombine_${sig}_noCR_workspace.AsymptoticLimits.mH120.root
 when_to_transfer_output = ON_EXIT_OR_EVICT
 request_memory          = 3000
 use_x509userproxy       = true
