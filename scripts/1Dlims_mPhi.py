@@ -132,3 +132,4 @@ for i, mX in enumerate(xs):
 
 fig.tight_layout()
 plt.savefig(f"plots/column_limits_1D_{'withCR' if args.withCR else 'noCR'}_mPhi.pdf")
+plt.savefig(f"plots/column_limits_1D_{'withCR' if args.withCR else 'noCR'}_mPhi.png")

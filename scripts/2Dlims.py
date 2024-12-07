@@ -142,6 +142,7 @@ for key, grid in grids.items():
         else:
             t = f'{label}% expected exclusion limits (fb)'
     colormesh(xx, yy, grid, t, "plots/limit2D_interp_{}_{}.pdf".format(label,'withCR' if args.withCR else 'noCR'))
+    colormesh(xx, yy, grid, t, "plots/limit2D_interp_{}_{}.png".format(label,'withCR' if args.withCR else 'noCR'))
 
 for key in range(6):
     if key == 0: label = '2.5'
@@ -159,3 +160,4 @@ for key in range(6):
         else:
             t = f'{label}% expected exclusion limits (fb)'
     scatter2d(val, t, "plots/limit2D_scatter_{}_{}.pdf".format(label,'withCR' if args.withCR else 'noCR'))
+    scatter2d(val, t, "plots/limit2D_scatter_{}_{}.png".format(label,'withCR' if args.withCR else 'noCR'))

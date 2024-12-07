@@ -131,3 +131,4 @@ for i, mY in enumerate(ys):
 
 fig.tight_layout()
 plt.savefig(f"plots/column_limits_1D_{'withCR' if args.withCR else 'noCR'}_mT.pdf")
+plt.savefig(f"plots/column_limits_1D_{'withCR' if args.withCR else 'noCR'}_mT.png")
