@@ -30,14 +30,14 @@ def parse_card(card):
     for np_idx, np_name in np_idxs.items():  # loop over the mcstats nuisance lines
         # get the original line describing this nuisance 
         old = lines[np_idx]
-        print('DEBUG-------------------------------------------------------------------------------------------')
-        print(old)
+        #print('DEBUG-------------------------------------------------------------------------------------------')
+        #print(old)
         old_split = old.split()
         new_split = old_split.copy()
-        print(new_split)
-        print('DEBUG-------------------------------------------------------------------------------------------')
+        #print(new_split)
+        #print('DEBUG-------------------------------------------------------------------------------------------')
         for i, bp in enumerate(bin_proc): # loop over the associated bin and procs
-            print(i,bp)
+            #print(i,bp)
             if i == 0: continue # this will just be ['bin','process']
 
             # For some reason the ZJets_18 proc in SR_Fail_LOW is missing a '-' entry for these...
@@ -92,10 +92,10 @@ def parse_card(card):
 
         # get number of 1.0 in the new list - should be 12 (SR or CR_pass_LOW/SIG/HIGH * 4 years)
         number_new = [i for i in new_split if i == '1.0']
-        print(np_name)
-        print(old_split)
-        print(new_split)
-        print(len(number_new))
+        #print(np_name)
+        #print(old_split)
+        #print(new_split)
+        #print(len(number_new))
         if 'mcstats' in np_name:
             assert(len(number_new) == 12)   # should be 12 (SR or CR_pass_LOW/SIG/HIGH * 4 years)
         else: # Xbb mistag, DAK8 tag

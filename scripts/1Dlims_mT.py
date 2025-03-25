@@ -61,74 +61,91 @@ def plot_limit_1D(ax, x_axis_vals, yMass, m2, m1, med, p1, p2, obs):
 xs = ['800', '900', '1000', '1200', '1400', '1600', '1800', '2000', '2400', '2800', '2900', '3000']
 ys = ['75', '100', '125', '175', '200', '250', '350', '450', '500']
 
-# 0: minus2, 1: minus2, 2: median, 3: plus1, 4: plus2, 5: observed
-dfs  = {0:None, 1:None, 2:None, 3:None, 4:None, 5:None}
-sigs = OrderedDict([(my,dfs.copy()) for my in ys])
-
-# Now populate the dfs dict with the full dataframes of all the limits 
-for i in range(len(dfs)):
-    if i == 0:
-        fname = f"limits/limits_Minus2_{'withCR' if args.withCR else 'noCR'}.csv"
-    elif i == 1:
-        fname = f"limits/limits_Minus1_{'withCR' if args.withCR else 'noCR'}.csv"
-    elif i == 2:
-        fname = f"limits/limits_Expected_{'withCR' if args.withCR else 'noCR'}.csv"
-    elif i == 3:
-        fname = f"limits/limits_Plus1_{'withCR' if args.withCR else 'noCR'}.csv"
-    elif i == 4:
-        fname = f"limits/limits_Plus2_{'withCR' if args.withCR else 'noCR'}.csv"
+for name in ['raw','scaled']:
+    if name == 'raw':
+        factor = 1.0
     else:
-        fname = f"limits/limits_Observed_{'withCR' if args.withCR else 'noCR'}.csv"
-    lim = pd.read_csv(fname)
-    dfs[i] = lim
+        factor = 0.991 * 0.6732 # T->bqq BR.  Wqq taken from https://arxiv.org/pdf/2201.07861
 
-# Store the dataframes for the median, +/-1 sigma, +/-2 sigma, and observed limits.
-for my in ys:
-    for lim in range(len(dfs)):
-        df = dfs[lim]
-        df = df[df['MPhi'] == float(my)]
-        sigs[my][lim] = df.sort_values(by='MTprime')
+    print(f'Plotting 1D limits {name}')
 
-# At this point, all 9 mPhi values have their 5 limits stored in pandas dfs as a function of mTprime.
-hep.cms.text("WiP",loc=0)
-lumiText = "138 $fb^{-1} (13 TeV)$"    
-hep.cms.lumitext(lumiText)
-fig, axes = plt.subplots(3, 3, figsize=(10,10), dpi=150, sharex=True, sharey=True)
-axes = axes.flatten()
-for i, mY in enumerate(ys):
-    ax = axes[i]
-    lims = sigs[mY]
-    y_vals = lims[0]['MTprime'].values # just grab the minus2 key as a dummy key to get they Y-vals. All keys should give the same
-    m2  = lims[0]['Limit (fb)'].values
-    m1  = lims[1]['Limit (fb)'].values
-    med = lims[2]['Limit (fb)'].values
-    p1  = lims[3]['Limit (fb)'].values
-    p2  = lims[4]['Limit (fb)'].values
-    o   = lims[5]['Limit (fb)'].values
+    # 0: minus2, 1: minus2, 2: median, 3: plus1, 4: plus2, 5: observed
+    dfs  = {0:None, 1:None, 2:None, 3:None, 4:None, 5:None}
+    sigs = OrderedDict([(my,dfs.copy()) for my in ys])
 
-    plot_limit_1D(
-        ax = ax, 
-        x_axis_vals = y_vals, 
-        yMass = mY, 
-        m2 = m2, 
-        m1 = m1, 
-        med = med,
-        p1 = p1, 
-        p2 = p2,
-        obs = o
-    )
-    # until I figure out a better way to apply a common x/y-axis label to subplots...
-    if i == 0:
-        ax.set_ylabel(r"$\sigma$(pp $\to T^\prime \to t\phi$) (fb)")
-        handles, labels = ax.get_legend_handles_labels()
-        ax.legend(handles, labels, loc='upper right', fontsize=8, frameon=True) # Draw legend with box so it doesn't get obscured by gridlines
-        lumiText = "138 $fb^{-1}$ (13 TeV)" 
-        hep.cms.text("WiP",loc=0,ax=ax)
-        hep.cms.lumitext(lumiText,ax=ax)
+    # Now populate the dfs dict with the full dataframes of all the limits 
+    for i in range(len(dfs)):
+        if i == 0:
+            fname = f"limits/limits_Minus2_{'withCR' if args.withCR else 'noCR'}.csv"
+        elif i == 1:
+            fname = f"limits/limits_Minus1_{'withCR' if args.withCR else 'noCR'}.csv"
+        elif i == 2:
+            fname = f"limits/limits_Expected_{'withCR' if args.withCR else 'noCR'}.csv"
+        elif i == 3:
+            fname = f"limits/limits_Plus1_{'withCR' if args.withCR else 'noCR'}.csv"
+        elif i == 4:
+            fname = f"limits/limits_Plus2_{'withCR' if args.withCR else 'noCR'}.csv"
+        else:
+            fname = f"limits/limits_Observed_{'withCR' if args.withCR else 'noCR'}.csv"
+        lim = pd.read_csv(fname)
+        dfs[i] = lim 
 
-    if i == len(ys)-1:
-        ax.set_xlabel(r"$m_{T^\prime}$ (GeV)",loc='right')
+    # Store the dataframes for the median, +/-1 sigma, +/-2 sigma, and observed limits.
+    for my in ys:
+        for lim in range(len(dfs)):
+            df = dfs[lim]
+            df = df[df['MPhi'] == float(my)]
+            sigs[my][lim] = df.sort_values(by='MTprime')
 
-fig.tight_layout()
-plt.savefig(f"plots/column_limits_1D_{'withCR' if args.withCR else 'noCR'}_mT.pdf")
-plt.savefig(f"plots/column_limits_1D_{'withCR' if args.withCR else 'noCR'}_mT.png")
+    # At this point, all 9 mPhi values have their 5 limits stored in pandas dfs as a function of mTprime.
+    hep.cms.text("WiP",loc=0)
+    lumiText = "138 $fb^{-1} (13 TeV)$"    
+    hep.cms.lumitext(lumiText)
+    fig, axes = plt.subplots(3, 3, figsize=(10,10), dpi=150, sharex=True, sharey=True)
+    axes = axes.flatten()
+
+    for i, mY in enumerate(ys):
+        ax = axes[i]
+        lims = sigs[mY]
+
+        # scale the values by factor (1 if raw, BRs if not)
+        for i in range(6):
+            lims[i]['Limit (fb)'] = lims[i]['Limit (fb)'] * factor
+
+        y_vals = lims[0]['MTprime'].values # just grab the minus2 key as a dummy key to get they Y-vals. All keys should give the same
+        m2  = lims[0]['Limit (fb)'].values
+        m1  = lims[1]['Limit (fb)'].values
+        med = lims[2]['Limit (fb)'].values
+        p1  = lims[3]['Limit (fb)'].values
+        p2  = lims[4]['Limit (fb)'].values
+        o   = lims[5]['Limit (fb)'].values
+
+        plot_limit_1D(
+            ax = ax, 
+            x_axis_vals = y_vals, 
+            yMass = mY, 
+            m2 = m2, 
+            m1 = m1, 
+            med = med,
+            p1 = p1, 
+            p2 = p2,
+            obs = o
+        )
+        # until I figure out a better way to apply a common x/y-axis label to subplots...
+        if i == 0:
+            if name == 'raw':
+                ax.set_ylabel(r"$\sigma$(pp $\to T^\prime \to t\phi$) [fb]")
+            else:
+                ax.set_ylabel(r'$\sigma$(pp $\to T^\prime \to t\phi$) $\times B(t\to bq\bar{q})\times B(\phi\to b\bar{b})$ [fb]')
+            handles, labels = ax.get_legend_handles_labels()
+            ax.legend(handles, labels, loc='upper right', fontsize=8, frameon=True) # Draw legend with box so it doesn't get obscured by gridlines
+            lumiText = "138 $fb^{-1}$ (13 TeV)" 
+            hep.cms.text("WiP",loc=0,ax=ax)
+            hep.cms.lumitext(lumiText,ax=ax)
+
+        if i == len(ys)-1:
+            ax.set_xlabel(r"$m_{T^\prime}$ (GeV)",loc='right')
+
+    fig.tight_layout()
+    plt.savefig(f"plots/column_limits_1D_{'withCR' if args.withCR else 'noCR'}_mT_{name}.pdf")
+    plt.savefig(f"plots/column_limits_1D_{'withCR' if args.withCR else 'noCR'}_mT_{name}.png")

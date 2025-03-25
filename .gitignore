@@ -10,3 +10,4 @@ condor/fits/
 failed_*.txt
 plots/
 condor/limits/
+*.pdf

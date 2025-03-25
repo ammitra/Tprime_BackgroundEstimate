@@ -167,6 +167,25 @@ python scripts/1Dlims_mT.py
 python scripts/HiggsLimits.py
 ```
 
+### Reduced unblinded limits workflow 
+
+First, set up workplace
+
+1. `source condor/tar_env_2DAlphabet.sh`
+2. `python condor/make_workspace_args.py`
+3. `python CondorHelper.py -r condor/run_makeworkspace.sh -i "joint_mcstats_onesig.json jointSRttbarCR.py parse_card_SRCR_mcstats.py" -a condor/workspace_args_tprime.txt`
+4. `source scripts/get_workspaces.sh`
+5. `source scripts/make_cards.sh`
+
+Then, run FitDiagnostics, run limits
+
+6. `python condor/submit_fits.py --sig $sig --verbosity $verbosity --tol $tol --strat $strat --rMin $rMin --rMax $rMax`
+7. `python scripts/handle_FitDiagnostics_CondorOutput.py`
+8. `python condor/submit_limits.py --sig $sig --seed $seed`
+9. `python scripts/handle_limits_CondorOutput.py`
+
+
+
 ### Notes on automcstats and other region-specific nuisances
 
 This analysis simultaneously fits a ttbar control region alongside the signal region to help constrain the ttbar normalization and ttbar-specific nuisances (top-pT reweighting). The ttbar CR is formed from the events that have an Xbb-score less than 0.8 (orthogonal to SR) and the fail/pass regions are formed using the DeepAK8MD top tagger at the loose WP. 
