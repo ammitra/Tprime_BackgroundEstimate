@@ -10,4 +10,10 @@ condor/fits/
 failed_*.txt
 plots/
 condor/limits/
+condor/*.txt
 *.pdf
+*.txt
+*.png
+*.log
+fitDiagnosticsTest_*.root
+higgsCombineTest*.root

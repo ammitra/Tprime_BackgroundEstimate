@@ -65,6 +65,11 @@ source scripts/make_cards.sh
 ```
 Modified combined cards will be stored under `$sig_unblind_fits/TprimeB-$sig-SR0x0-CR0x0_area/card.txt`. See notes below for detailed description of the card modification process.
 
+After generating the datacards, check for any missing or failed workspaces with
+```
+python scripts/check_missing.py
+```
+
 ### 3) Running fits after workspace creation 
 
 Locally: 
@@ -74,9 +79,14 @@ python jointSRttbarCR.py -s $sig -w "$sig"_ --SRtf $SRtf --CRtf $CRtf --strat $s
 
 **NOTE:** To run on condor, the combined cards must first be created, as they are used as input to the condor job. Run this locally as in step 2 above.
 
-Condor:
+Condor submission for individual signal:
 ```
 python condor/submit_fits.py --sig $sig --verbosity $verbosity --tol $tol --strat $strat --rMin $rMin --rMax $rMax 
+```
+
+To automate it for all signals, run:
+```
+source scripts/submit_fits.sh
 ```
 
 This will generate three files that need to be placed in their respective workspace directory:
@@ -180,10 +190,17 @@ First, set up workplace
 Then, run FitDiagnostics, run limits
 
 6. `python condor/submit_fits.py --sig $sig --verbosity $verbosity --tol $tol --strat $strat --rMin $rMin --rMax $rMax`
+   * This can be run for all signals with `scripts/submit_fits.sh`
 7. `python scripts/handle_FitDiagnostics_CondorOutput.py`
 8. `python condor/submit_limits.py --sig $sig --seed $seed`
 9. `python scripts/handle_limits_CondorOutput.py`
 
+Recommended settings for FitDiagnostics:
+
+* `verbosity`: 2 as default, 3 if method fails. Anything more and it gets very annoying to parse, mostly repetitive.
+* `tol`: 0.1 is the default and this usually works, but it's fine to bump it up to 5 or even 10 to help the fit converge. Just check the post-fit errors and make sure they're not unreasonable. 
+* `strat`: 1 is best. The addition of `--robustFit 1` can help, but with these complex likelihoods it just adds processing time without much benefit
+* `rMin,rMax`: [-1,1]
 
 
 ### Notes on automcstats and other region-specific nuisances

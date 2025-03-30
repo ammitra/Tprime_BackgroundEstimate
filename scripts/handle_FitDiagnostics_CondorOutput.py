@@ -4,8 +4,9 @@ Moves the FitDiagnostics Condor output files to their respective directories.
 import glob, os, ROOT
 from TwoDAlphabet.helpers import execute_cmd
 
-failed = open('failed_FitDiagnostics.txt','w')
+failed = open('FAILED_FitDiagnostics.txt','w')
 
+# Create the postfit workspace which will be used as a snapshot for the limit toys. 
 def make_postfit_workspace(fd):
     signal = fd.split('.root')[0].split('_')[-1]
     print(f'Making postfit workspace for signal {signal}...')

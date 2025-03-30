@@ -42,7 +42,7 @@ ls -lh
 echo "sed -i 's-../base.root-./base.root-g' card.txt"
 sed -i 's-../base.root-./base.root-g' card.txt
 # Run the fit
-(set -x; combine -M FitDiagnostics card.txt --text2workspace "--channel-masks" --setParameters r=1 --saveWorkspace --cminDefaultMinimizerStrategy $strat --rMin $rMin --rMax $rMax -v $v --robustFit 1 --cminDefaultMinimizerTolerance $tol)
+(set -x; combine -M FitDiagnostics card.txt --text2workspace "--channel-masks" --saveWorkspace --cminDefaultMinimizerStrategy $strat --rMin $rMin --rMax $rMax -v $v --robustFit 1 --cminDefaultMinimizerTolerance $tol)
 # Rename output 
 mv fitDiagnosticsTest.root fitDiagnosticsTest_"${sig}".root
 mv card.txt card_"${sig}".txt

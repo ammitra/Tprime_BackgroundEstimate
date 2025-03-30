@@ -32,14 +32,17 @@ formatter.set_powerlimits((-3, 3))
 plt.rcParams.update({"font.size": 20})
 
 def mxmy(sample):
-    mX = float(sample.split('/')[1].split('_')[0].split('-')[0])
-    mY = float(sample.split('/')[1].split('_')[0].split('-')[1])
+    # Example input: 1000-100_unblind_fits/higgsCombine_1000-100_noCR_workspace.AsymptoticLimits.mH120.root
+    mX = float(sample.split('/')[1].split('_')[1].split('-')[0])
+    mY = float(sample.split('/')[1].split('_')[1].split('-')[1])
     return (mX, mY)
 
 # 0-4 are m2,m1,exp,p1,p2 sigma limits, 5 is observed
 limits = {0: [], 1: [], 2: [], 3: [], 4: [], 5: []}
 limits_tbqq = {0: [], 1: [], 2: [], 3: [], 4: [], 5: []}
-files = glob.glob('results_unblinded_ANv14_Paperv3_noQCDscale/*_fits/higgsCombine*workspace*.AsymptoticLimits.*')
+
+#files = glob.glob('results_unblinded_ANv14_Paperv3_noQCDscale/*_fits/higgsCombine*workspace*.AsymptoticLimits.*')
+files = glob.glob('*_fits/higgsCombine*workspace*.AsymptoticLimits.*')
 
 files = [f for f in files if 'workspace' in f]
 if args.withCR:

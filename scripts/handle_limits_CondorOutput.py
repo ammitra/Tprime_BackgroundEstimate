@@ -16,8 +16,18 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--withCR", dest='withCR', action='store_true', help='If passed as an argument, use the limits calculated with the ttbar CR. Otherwise, will use the limits calculated with the CR masked.')
 args = parser.parse_args()
 
-limits = glob.glob('higgsCombine_*.AsymptoticLimits.mH120.root')
+# Just hard-code this to look only for jobs without CR
+limits = glob.glob('higgsCombine_*_noCR_workspace.AsymptoticLimits.mH120.root')
 
 for rootfile in limits:
     signal = rootfile.split('_')[1]
-    execute_cmd(f'mv higgsCombine_{signal}*.AsymptoticLimits.mH120.root {signal}_unblind_fits/')
+    # First check whether the `limit` TTree has all 5 branches (+/-1,2 sigma expected and observed).
+    # If it does not, this indicates that the AsymptoticLimits command failed for this mass point. 
+    f = ROOT.TFile.Open(rootfile)
+    limit = f.Get('limit')
+    if limit.GetEntries() != 6:
+        print(f'ERROR: AsymptoticLimit calculation for signal {signal} failed. Redo.')
+        execute_cmd(f'mv {rootfile} FAILED_{rootfile}')
+    else:
+        execute_cmd(f'mv {rootfile} {signal}_unblind_fits/')
+    f.Close()
