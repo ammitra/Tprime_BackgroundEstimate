@@ -57,7 +57,10 @@ sed -i 's-../base.root-./base.root-g' card.txt
 #setCRparams="var{ttbarCR.*_mcstats.*}=0,rgx{ttbarCR.*_mcstats.*}=0,var{Background_ttbarCR.*_bin.*}=0,rgx{Background_ttbarCR.*_bin.*}=0,Background_ttbarCR_rpf_0x0_par0=0,DAK8Top_tag=0"
 #freezeCRparams="var{ttbarCR.*_mcstats.*},rgx{ttbarCR.*_mcstats.*},var{Background_ttbarCR.*_bin.*},rgx{Background_ttbarCR.*_bin.*},DAK8Top_tag,Background_ttbarCR_rpf_0x0_par0"
 
-(set -x; combine -M AsymptoticLimits -d "initialFitWorkspace_${sig}.root" --snapshotName initialFit --saveWorkspace -v 4 -n "_${sig}_noCR_workspace" -s 123456 --setParameters "${maskCRargs},${setCRparams}" --freezeParameters "${freezeCRparams}" --cminDefaultMinimizerTolerance 10 --cminDefaultMinimizerStrategy 0)
+#(set -x; combine -M AsymptoticLimits -d "initialFitWorkspace_${sig}.root" --snapshotName initialFit --saveWorkspace -v 4 -n "_${sig}_noCR_workspace" -s $seed --setParameters "${maskCRargs},${setCRparams}" --freezeParameters "${freezeCRparams}" --cminDefaultMinimizerTolerance $tol --cminDefaultMinimizerStrategy $strat --X-rtd MINIMIZER_MaxCalls=400000 --rMin -1 --rMax $rmax)
+
+(set -x; combine -M AsymptoticLimits -d card.txt --saveWorkspace -v 4 -n "_${sig}_noCR_workspace" -s $seed --setParameters "${maskCRargs},${setCRparams}" --freezeParameters "${freezeCRparams}" --cminDefaultMinimizerTolerance $tol --cminDefaultMinimizerStrategy $strat --X-rtd MINIMIZER_MaxCalls=400000 --rMin -1 --rMax $rmax)
+
 
 echo "ls -lh"
 ls -lh

@@ -47,7 +47,10 @@ def main(args):
     sh_templ = f"{submitdir}/submit_limits.templ.sh"
 
     # get the location of base.root
-    base_root_dir = Path(f'{args.sig}_unblind_fits')
+    if not args.interpolated:
+        base_root_dir = Path(f'{args.sig}_unblind_fits')
+    else:
+        base_root_dir = Path(f'{args.sig}-INTERPOLATED_unblind_fits')
 
     local_jdl = Path(f'{local_dir}/{prefix}.jdl')
     local_log = Path(f'{local_dir}/{prefix}.log')
@@ -55,6 +58,7 @@ def main(args):
     # Arguments for jdl 
     jdl_args = {
         "dir": local_dir,
+        "base_root_dir": base_root_dir,
         "prefix": prefix,
         "sig": args.sig
     }
@@ -70,6 +74,9 @@ def main(args):
     sh_args = {
         "sig": args.sig,
         "seed": args.seed,
+        "strat": args.strat,
+        "tol": args.tol,
+        "rmax": args.rmax,
         "maskCRargs": "mask_SR_fail_LOW=0,mask_SR_fail_SIG=0,mask_SR_fail_HIGH=0,mask_SR_pass_LOW=0,mask_SR_pass_SIG=0,mask_SR_pass_HIGH=0,mask_ttbarCR_fail_LOW=1,mask_ttbarCR_fail_SIG=1,mask_ttbarCR_fail_HIGH=1,mask_ttbarCR_pass_LOW=1,mask_ttbarCR_pass_SIG=1,mask_ttbarCR_pass_HIGH=1",
         "setCRparams": "var{ttbarCR.*_mcstats.*}=0,rgx{ttbarCR.*_mcstats.*}=0,var{Background_ttbarCR.*_bin.*}=0,rgx{Background_ttbarCR.*_bin.*}=0,Background_ttbarCR_rpf_0x0_par0=0,DAK8Top_tag=0",
         "freezeCRparams": "var{ttbarCR.*_mcstats.*},rgx{ttbarCR.*_mcstats.*},var{Background_ttbarCR.*_bin.*},rgx{Background_ttbarCR.*_bin.*},DAK8Top_tag,Background_ttbarCR_rpf_0x0_par0"
@@ -88,6 +95,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--sig", help="signal name", type=str, required=True)
     parser.add_argument("--seed", default=123456, help="seed", type=int)
+    parser.add_argument("--strat", default=0, help="strat", type=int)
+    parser.add_argument("--tol", default=10, help="tol", type=float)
+    parser.add_argument("--rmax", default=4, help="rMax", type=float)
+    parser.add_argument("--interpolated", help="signal is interpolated", action='store_true')
     args = parser.parse_args()
 
     main(args)

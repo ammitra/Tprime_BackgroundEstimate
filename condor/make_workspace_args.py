@@ -1,5 +1,6 @@
 import glob, os
-
+import numpy as np
+'''
 # Use snapshots, since this will only get signal files that have been successfully processed
 inDir = '/uscms/home/ammitra/nobackup/TopPhi_analysis/CMSSW_12_3_5/src/TopHBoostedAllHad/dijet_nano/*.txt'
 snapshotFiles = glob.glob(inDir)
@@ -16,13 +17,14 @@ signalFiles = [i.split('/')[-1].split('.')[0].split('_')[0] for i in snapshotFil
 f = open('condor/Tprime_signals.txt','r')
 signames = [i.strip() for i in f.readlines()]
 f.close()
+'''
+
+MTs = np.arange(800,3100,100)
+MPs = [75,100,125,175,200,250,350,450,500]
+SRtf = '0x0'
+CRtf = '0x0'
 
 out = open('condor/workspace_args_tprime.txt','w')
-for sig in signames:
-    # format is MT-MPHI
-    MT   = sig.split('-')[0]
-    MPHI = sig.split('-')[1]
-    SRtf = '0x0'
-    CRtf = '0x0'
-
-    out.write(f'-w {MT}-{MPHI}_unblind_ -s {MT}-{MPHI} --SRtf {SRtf} --CRtf {CRtf} --make\n')
+for MT in MTs:
+    for MPHI in MPs:
+        out.write(f'-w {MT}-{MPHI}_unblind_ -s {MT}-{MPHI} --SRtf {SRtf} --CRtf {CRtf} --make\n')

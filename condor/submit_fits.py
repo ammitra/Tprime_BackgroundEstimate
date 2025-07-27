@@ -42,7 +42,10 @@ def main(args):
     sh_templ = f"{submitdir}/submit_FitDiagnostics.templ.sh"
 
     # get the location of base.root
-    base_root_dir = Path(f'{args.sig}_unblind_fits')
+    if not args.interpolated:
+        base_root_dir = Path(f'{args.sig}_unblind_fits')
+    else:
+        base_root_dir = Path(f'{args.sig}-INTERPOLATED_unblind_fits')
 
     local_jdl = Path(f'{local_dir}/{prefix}.jdl')
     local_log = Path(f'{local_dir}/{prefix}.log')
@@ -80,6 +83,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     # GET THE APPROPRIATE INPUT FILES
     parser.add_argument("--sig", help="signal name", type=str, required=True)
+    parser.add_argument("--interpolated", help="signal is interpolated", action='store_true')
     # FIT ARGUMENTS 
     parser.add_argument("--verbosity", default=2, help="verbosity", type=int)
     parser.add_argument("--tol", default=0.1, help="minimizer tolerance", type=float)

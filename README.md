@@ -193,6 +193,7 @@ Then, run FitDiagnostics, run limits
    * This can be run for all signals with `scripts/submit_fits.sh`
 7. `python scripts/handle_FitDiagnostics_CondorOutput.py`
 8. `python condor/submit_limits.py --sig $sig --seed $seed`
+    * This can be run for all signals with `scripts/submit_limits.sh`
 9. `python scripts/handle_limits_CondorOutput.py`
 
 Recommended settings for FitDiagnostics:
@@ -202,6 +203,21 @@ Recommended settings for FitDiagnostics:
 * `strat`: 1 is best. The addition of `--robustFit 1` can help, but with these complex likelihoods it just adds processing time without much benefit
 * `rMin,rMax`: [-1,1]
 
+## Signal interpolation 
+
+During ARC review, we decided to perform interpolation of the signal shapes in order to fill in the missing $\phi$ masses in the grid. The signals are only generated for $\phi$ masses of `[75, 100, 125, 175, 200, 250, 350, 450, 500]` GeV, and so we interpolate between the existing $\phi$ masses for all $m_{T^\prime}$ to ensure the spacing in $m_\phi$ is 25 GeV. The details are discussed in `Interpolation/README.md`. After performing the interpolation, the interpolated signals can be fit and limits obtained. The instructions for doing so are here:
+
+Set up the workspaces
+1. `python condor/make_workspace_args_interpolated.py`
+2. `python CondorHelper.py -r condor/run_makeworkspace.sh -i "interpolated.json jointSRttbarCR.py parse_card_SRCR_mcstats.py" -a condor/workspace_args_tprime_interpolated.txt`
+3. `source scripts/get_workspaces.sh`
+4. `source scripts/make_cards_interpolated.sh`
+5. `python condor/submit_fits.py --sig $sig --verbosity $verbosity --tol $tol --strat $strat --rMin $rMin --rMax $rMax --interpolated`
+   * This can be run for all signals with `scripts/submit_fits_interpolated.sh`
+6. `python scripts/handle_FitDiagnostics_CondorOutput.py`
+7. `python condor/submit_limits.py --sig $sig --seed $seed --interpolated`
+    * This can be run for all signals with `scripts/submit_limits_interpolated.sh`
+8. `python scripts/handle_limits_CondorOutput_interpolated.py`
 
 ### Notes on automcstats and other region-specific nuisances
 

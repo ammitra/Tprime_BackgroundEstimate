@@ -13,11 +13,10 @@ cd $CMSSW_BASE/../
     --exclude=CMSSW_14_1_0_pre4/src/autoMCstats/backup* \
     --exclude=CMSSW_14_1_0_pre4/src/XHYbbWW \
     --exclude=CMSSW_14_1_0_pre4/src/Tprime \
-    --exclude=CMSSW_14_1_0_pre4/src/for_tamas \
+    --exclude=CMSSW_14_1_0_pre4/src/for_* \
     --exclude=CMSSW_14_1_0_pre4/src/twoD-env \
-    --exclude=CMSSW_14_1_0_pre4/src/B2G-22-001 \
+    --exclude=CMSSW_14_1_0_pre4/src/B2G* \
     --exclude=CMSSW_14_1_0_pre4/src/michael \
-    --exclude=CMSSW_14_1_0_pre4/src/for_dragana \
     CMSSW_14_1_0_pre4
 xrdcp -f CMSSW_14_1_0_pre4_env.tgz root://cmseos.fnal.gov//store/user/$USER/
 cd $CMSSW_BASE/src/Tprime
